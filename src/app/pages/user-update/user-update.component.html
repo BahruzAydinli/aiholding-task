@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 mx-auto mt-3">
+      <form
+        [formGroup]="form"
+        class="text-center border border-light p-5"
+        autocomplete="off"
+      >
+        <p class="h4 mb-4">İstifadəçi əlavə et</p>
+
+        <div class="form-row mb-4">
+          <div class="col">
+            <input
+              type="text"
+              id="defaultRegisterFormFirstName"
+              class="form-control"
+              placeholder="Ad"
+              formControlName="name"
+              [ngStyle]="
+                form.controls['name'].touched && !form.controls['name'].valid
+                  ? { 'border-color': 'red' }
+                  : { 'border-color': '#ced4da' }
+              "
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              id="defaultRegisterFormLastName"
+              class="form-control"
+              placeholder="Soyad"
+              formControlName="surname"
+              [ngStyle]="
+                form.controls['surname'].touched &&
+                !form.controls['surname'].valid
+                  ? { 'border-color': 'red' }
+                  : { 'border-color': '#ced4da' }
+              "
+            />
+          </div>
+        </div>
+
+        <input
+          type="email"
+          id="defaultRegisterFormEmail"
+          class="form-control mb-4"
+          placeholder="Elektron poçt"
+          formControlName="email"
+          [ngStyle]="
+            form.controls['email'].touched && !form.controls['email'].valid
+              ? { 'border-color': 'red' }
+              : { 'border-color': '#ced4da' }
+          "
+        />
+
+        <input
+          type="text"
+          id="defaultRegisterFormUsername"
+          class="form-control mb-4"
+          placeholder="İstifadəçi adı"
+          formControlName="username"
+          [ngStyle]="
+            form.controls['username'].touched &&
+            !form.controls['username'].valid
+              ? { 'border-color': 'red' }
+              : { 'border-color': '#ced4da' }
+          "
+        />
+
+        <input
+          type="password"
+          id="defaultRegisterFormPassword"
+          class="form-control"
+          placeholder="Şifrə"
+          aria-describedby="defaultRegisterFormPasswordHelpBlock"
+          formControlName="password"
+          [ngStyle]="
+            form.controls['password'].touched &&
+            !form.controls['password'].valid
+              ? { 'border-color': 'red' }
+              : { 'border-color': '#ced4da' }
+          "
+        />
+        <small
+          id="defaultRegisterFormPasswordHelpBlock"
+          class="form-text text-muted mb-2 float-left"
+        >
+          Ən azından 8 simvol olmalıdır
+        </small>
+
+        <input
+          type="text"
+          id="defaultRegisterPhonePassword"
+          class="form-control"
+          placeholder="Əlaqə nömrəsi"
+          formControlName="phone"
+        />
+
+        <div class="custom-control custom-switch float-left my-3">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="customSwitches"
+            formControlName="isPremium"
+          />
+          <label class="custom-control-label" for="customSwitches"
+            >Premium istifadəçi</label
+          >
+        </div>
+
+        <button
+          mdbBtn
+          color="info"
+          block="true"
+          class="my-4"
+          type="submit"
+          [disabled]="!form.valid"
+          (click)="addItem()"
+        >
+          Əlavə et
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

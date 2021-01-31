@@ -1,0 +1,101 @@
+<div class="container">
+  <form
+    [formGroup]="form"
+    class="text-center border border-light p-5 mt-3"
+    autocomplete="off"
+  >
+    <p class="h4 mb-4">Məqalə əlavə et</p>
+
+    <div class="float-left w-100 mb-3">
+      <button
+        (click)="selected_language = 'az'"
+        type="button"
+        mdbBtn
+        color="primary"
+        mdbWavesEffect
+      >
+        Azərbaycan dİLİ
+      </button>
+      <button
+        (click)="selected_language = 'en'"
+        type="button"
+        mdbBtn
+        color="secondary"
+        mdbWavesEffect
+      >
+        English
+      </button>
+    </div>
+    <ng-container *ngIf="selected_language === 'az'">
+      <div class="form-row mb-4">
+        <input
+          type="text"
+          id="defaultRegisterFormFirstName"
+          class="form-control"
+          placeholder="Başlıq"
+          formControlName="title_az"
+          [ngStyle]="
+            form.controls['title_az'].touched &&
+            !form.controls['title_az'].valid
+              ? { 'border-color': 'red' }
+              : { 'border-color': '#ced4da' }
+          "
+        />
+      </div>
+
+      <ckeditor
+        [editor]="Editor"
+        data=""
+        formControlName="description_az"
+      ></ckeditor>
+    </ng-container>
+
+    <ng-container *ngIf="selected_language === 'en'">
+      <div class="form-row mb-4">
+        <input
+          type="text"
+          id="defaultRegisterFormFirstName"
+          class="form-control"
+          placeholder="Title"
+          formControlName="title_en"
+          [ngStyle]="
+            form.controls['title_en'].touched &&
+            !form.controls['title_en'].valid
+              ? { 'border-color': 'red' }
+              : { 'border-color': '#ced4da' }
+          "
+        />
+      </div>
+
+      <ckeditor
+        [editor]="Editor"
+        data=""
+        formControlName="description_en"
+      ></ckeditor>
+    </ng-container>
+
+    <div class="custom-control custom-switch float-left my-3">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        id="customSwitches"
+        formControlName="isPremium"
+      />
+      <label class="custom-control-label" for="customSwitches"
+        >Premium xəbər</label
+      >
+    </div>
+
+    <button
+      mdbBtn
+      color="info"
+      block="true"
+      class="my-4"
+      type="submit"
+      [disabled]="!form.valid"
+      (click)="addItem()"
+    >
+      Əlavə et
+    </button>
+  </form>
+</div>
